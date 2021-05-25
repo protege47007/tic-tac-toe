@@ -1,0 +1,443 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+/*Body alignment*/
+body{
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    flex-direction: column;
+    margin: auto;
+}
+
+.scoreboard{
+    margin: 1rem auto;
+    display: flex;
+    flex-direction: row;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    border: 1px solid #000;
+}
+
+.X, .O{
+    color: tomato;
+}
+
+#x, #o{
+    padding: 1%;
+}
+
+.tile{
+    display: inline-flex;
+    vertical-align: top;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: 900;
+}
+
+/*board definition and styling*/
+.board{
+    margin: 2rem auto;
+    box-shadow: 2px 2px 4px #000;
+}
+
+/* tile styling*/
+.one {
+    background-color: tomato;
+}
+
+.two {
+    background-color: red;
+}
+
+.three {
+    background-color: orange;
+}
+
+.four {
+    background-color: orangered;
+}
+
+.five {
+    background-color: peru;
+}
+
+.six {
+    background-color: yellowgreen;
+}
+
+.seven {
+    background-color: olive;
+}
+
+.eight {
+    background-color: olivedrab;
+}
+
+.nine {
+    background-color: palevioletred;
+}
+
+/*Game status Styling */
+.status{
+    display: inline-flex;
+    align-content: center;
+    justify-content: center;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    border: 1px dotted #000;
+    margin: 1rem auto;
+}
+
+.two, .five, .eight, .three, .six, .nine{
+    border-left: 2px solid #000;
+}
+
+.one, .two, .three, .four, .five, .six{
+    border-bottom: 2px solid #000;
+}
+
+/* styling the reset button*/
+button{
+    padding: 1%;
+    margin: 1rem auto;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    background-color: #fff;
+    color: rgba(0, 0, 0, .5);
+    border: none;
+    cursor: pointer;
+}
+button:hover{
+    background-color: #000;
+    color: #fff;
+    transition: .4s ease-in-out;
+}
+button:focus{
+    border: 1px dotted #000;
+}
+
+
+
+
+
+
+/*galaxy fold*/
+@media  only screen and (max-width: 280px) {
+    /*Body alignment*/
+    body{
+        width: 100%;
+        height: 95vh;
+    }
+    
+    /*Score board styling */
+    .scoreboard{
+        width: 95%;
+        height: 2rem;
+        font-size: 1.3rem;
+    }
+    
+    /*board definition and styling*/
+    .board{
+        width: 85%;
+        height: 15rem;
+    }
+    
+    .tile{
+        width: 33.3%;
+        height: 5rem;
+        font-size: 2rem;
+    }
+    
+    
+    .two, .five, .eight{
+        margin-left: -1.6%;
+    }
+    .three, .six, .nine{
+        margin-left: -2%;
+    }
+    
+    
+    
+    /*Game status Styling */
+    .status{
+        width: 90%;
+        height: 2rem;
+        font-size: 1rem;
+    }
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+/*small phones*/
+@media only screen and (min-width: 320px){
+    
+    /*Body alignment*/
+    body{
+        width: 90%;
+        height: 95vh;
+    }
+    
+    /*Score board styling */
+    .scoreboard{
+        width: 90%;
+        height: 2rem;
+        font-size: 1.2rem;
+    }
+    
+    /*board definition and styling*/
+    .board{
+        width: 80%;
+        height: 15rem;
+    }
+    
+    .tile{
+        width: 33.3999%;
+        height: 5rem;
+        font-size: 2rem;
+    }
+    
+    
+    .two, .five, .eight{
+        margin-left: -1.7%;
+    }
+    .three, .six, .nine{
+        margin-left: -2%;
+    }
+    
+    
+    
+    /*Game status Styling */
+    .status{
+        width: 100%;
+        height: 2.5rem;
+        font-size: 1.1rem;
+    }
+    
+
+}
+
+
+
+
+
+/*normal phones*/
+@media  only screen and (min-width: 400px) {
+    /*Body alignment*/
+    body{
+        width: 100%;
+        height: 95vh;
+    }
+    
+    /*Score board styling */
+    .scoreboard{
+        width: 90%;
+        height: 3rem;
+        font-size: 1.7rem;
+    }
+    
+    /*board definition and styling*/
+    .board{
+        width: 60%;
+        height: 15rem;
+    }
+    
+    .tile{
+        width: 33.39%;
+        height: 5rem;
+        font-size: 2rem;
+    }
+    
+    
+    .two, .five, .eight{
+        margin-left: -1.5%;
+    }
+    .three, .six, .nine{
+        margin-left: -2%;
+    }
+    
+    
+    
+    /*Game status Styling */
+    .status{
+        width: 90%;
+        height: 2.5rem;
+        font-size: 1.3rem;
+    }
+      
+}
+
+
+
+
+
+
+
+/*tablet screen*/
+@media only screen and (min-width: 768px) {
+
+
+    /*Body alignment*/
+    body {
+        width: 90%;
+        height: 85vh;
+    }
+
+    /*Score board styling */
+    .scoreboard {
+        width: 60%;
+        height: 3rem;
+        font-size: 2rem;
+    }
+
+
+    /*board definition and styling*/
+    .board {
+        width: 60%;
+        height: 15rem;
+        margin: 2rem auto;
+    }
+
+    .tile {
+        width: 33.29%;
+        height: 5rem;
+        font-size: 2rem;
+    }
+
+    .two,
+    .five,
+    .eight,
+    .three,
+    .six,
+    .nine {
+        margin-left: -1%;
+    }
+
+
+    /*Game status Styling */
+    .status {
+        width: 80%;
+        height: 4rem;
+        margin: 1rem auto;
+        font-size: 2.1rem;
+    }
+
+
+    /*end of 768px screen*/
+}
+
+
+
+
+
+
+
+
+/* small-laptop resolution*/
+@media  only screen and (min-width: 1024px) {
+    /*Body alignment*/
+    body{
+        width: 60%;
+        height: 95vh;
+    }
+    
+    /*Score board styling */
+    .scoreboard{
+        width: 65%;
+        height: 4rem;
+        padding: .7%;
+        font-size: 2.5rem;
+    }
+    
+    /*board definition and styling*/
+    .board{
+        width: 60%;
+        height: 15rem;
+    }
+    
+    .tile{
+        width: 33.9%;
+        height: 5rem;
+        font-size: 2rem;
+    }
+    
+    
+    .two, .five, .eight{
+        margin-left: -1.5%;
+    }
+    .three, .six, .nine{
+        margin-left: -2%;
+    }
+    
+    
+    
+    /*Game status Styling */
+    .status{
+        width: 70%;
+        height: 3rem;
+        font-size: 2rem;
+    }
+      
+}
+
+
+
+
+
+/* bigboys laptop resolution*/
+@media  only screen and (min-width: 1440px) {
+    /*Body alignment*/
+    body{
+        width: 50%;
+        height: 75vh;
+    }
+    
+    /*Score board styling */
+    .scoreboard{
+        width: 77%;
+        height: 4rem;
+        font-size: 2.5rem;
+    }
+    
+    /*board definition and styling*/
+    .board{
+        width: 65%;
+        height: 15rem;
+    }
+    
+    .tile{
+        width: 33.9%;
+        height: 5rem;
+        font-size: 2rem;
+    }
+    
+    
+    .two, .five, .eight{
+        margin-left: -1.5%;
+    }
+    .three, .six, .nine{
+        margin-left: -2%;
+    }
+    
+    
+    
+    /*Game status Styling */
+    .status{
+        width: 80%;
+        height: 3rem;
+        font-size: 2rem;
+    }
+      
+}
+
