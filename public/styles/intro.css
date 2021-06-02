@@ -1,0 +1,44 @@
+.alert{
+    width: 50%;
+    height: 50vh;
+    padding: 5%;
+    margin: 1rem auto;
+}
+
+#form{
+    padding: 5%;
+}
+
+.fs {
+    height: 5rem;
+    padding: 2%; 
+}
+
+.host {
+    margin: 1rem 0;
+}
+#hostName{
+    display: block;
+    height: 2rem;
+    width: 70%;
+    margin: 1% 0;
+}
+
+.od{
+    display: none;
+}
+
+#start {
+    padding: 1%;
+    margin: .5rem 0;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    background-color: #fff;
+    color: rgba(0, 0, 0);
+    border: 1px solid #000;
+    cursor: pointer;
+}
+
+#start:hover {
+    background-color: #000;
+    color: #fff;
+}

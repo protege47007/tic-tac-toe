@@ -11,13 +11,13 @@ body{
     justify-content: center;
     flex-direction: column;
     margin: auto;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 .scoreboard{
     margin: 1rem auto;
     display: flex;
     flex-direction: row;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
     border: 1px solid #000;
 }
 
@@ -35,7 +35,6 @@ body{
     align-items: center;
     justify-content: center;
     text-align: center;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-weight: 900;
 }
 
@@ -87,7 +86,6 @@ body{
     display: inline-flex;
     align-content: center;
     justify-content: center;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
     border: 1px dotted #000;
     margin: 1rem auto;
 }
@@ -101,10 +99,9 @@ body{
 }
 
 /* styling the reset button*/
-button{
+#reset{
     padding: 1%;
     margin: 1rem auto;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
     background-color: #fff;
     color: rgba(0, 0, 0, .5);
     border: none;
@@ -117,6 +114,12 @@ button:hover{
 }
 button:focus{
     border: 1px dotted #000;
+}
+
+
+
+.game{
+    display: none;
 }
 
 

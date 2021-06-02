@@ -4,28 +4,60 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="/styles/style.css">
+    <link rel="stylesheet" href="/styles/intro.css">
     <title>Tic-Tac-Toe Reloaded</title>
 </head>
 <body>
-    <div class="scoreboard">
-        <h4 id="x">Player X <span class="X">0</span></h4>
-        <span class="colon">:</span>
-        <h4 id="o"><span class="O">0</span> Player O</h4>
+
+    <!--sign-in input field-->
+    <div class="alert">
+        <form id="form">
+            <fieldset >
+                <fieldset class="fs">
+                    <legend>Game Mode</legend>
+                    <label for="mode">Online</label>
+                    <input type="radio" name="mode" value="online" required>
+                    <label for="mode">Offline</label>
+                    <input type="radio" name="mode" value="offline" required>
+                </fieldset>
+                <fieldset class="fs host">
+                    <label for="nickname">Host</label><br>
+                    <input type="text" name="nickname" id="hostName" placeholder="Enter Your Nickname" required>
+                </fieldset>
+    
+                <fieldset class="fs od">
+                    <label for="nickname">Identify Yourself</label><br>
+                    <input type="text" name="nickname" id="hostName" placeholder="Enter Your Nickname" required>
+                </fieldset>
+                <button id="start" type="submit">Start Game</button>
+            </fieldset>
+        </form>
     </div>
-    <div class="board">
-        <div class="tile one" data-index="0"></div>
-        <div class="tile two" data-index="1"></div>
-        <div class="tile three" data-index="2"></div>
-        <div class="tile four" data-index="3"></div>
-        <div class="tile five" data-index="4"></div>
-        <div class="tile six" data-index="5"></div>
-        <div class="tile seven" data-index="6"></div>
-        <div class="tile eight" data-index="7"></div>
-        <div class="tile nine" data-index="8"></div>
+    <!--End of players intialisation-->
+
+    <!--game board layout-->
+    <div class="game">
+        <div class="scoreboard">
+            <h4 id="x">Player X <span class="X">0</span></h4>
+            <span class="colon">:</span>
+            <h4 id="o"><span class="O">0</span> Player O</h4>
+        </div>
+        <div class="board">
+            <div class="tile one" data-index="0"></div>
+            <div class="tile two" data-index="1"></div>
+            <div class="tile three" data-index="2"></div>
+            <div class="tile four" data-index="3"></div>
+            <div class="tile five" data-index="4"></div>
+            <div class="tile six" data-index="5"></div>
+            <div class="tile seven" data-index="6"></div>
+            <div class="tile eight" data-index="7"></div>
+            <div class="tile nine" data-index="8"></div>
+        </div>
+        <div class="status"><h3>Player <span class="turn"></span></h3></div>
+        <button id="reset">Reset</button>
     </div>
-    <div class="status"><h3>Player <span class="turn"></span></h3></div>
-    <button class="reset">Reset</button>
-    <script src="script.js"></script>
+    <script src="/scripts/index.js"></script>
+    <script src="/scripts/script.js"></script>
 </body>
 </html>

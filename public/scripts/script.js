@@ -39,11 +39,23 @@ function sqPlayed(sqClicked, sqIndex) {
     sqClicked.innerHTML = currentPl;
 }
 
+
+
+
+
+
+
 //function to handle player change after a play
 function plChange(){
     currentPl = currentPl === "X" ? "O" : "X";
     turn.innerHTML = plTurn();
 }
+
+
+
+
+
+
 
 //wining combinations declaration
 const winingCombos = [
@@ -136,11 +148,7 @@ function resetGame(){
 
 // this resets the board and the scoreboard
 function resetBtn(){
-    active = true;
-    currentPl = "X";
-    state = ["", "", "", "", "", "", "", "", ""];
-    turn.innerHTML = plTurn();
-    document.querySelectorAll('.tile').forEach( e => e.innerHTML= "");
+    resetGame();
     document.querySelector('.O').innerText = String('0');
     document.querySelector('.X').innerText = String('0');
 }
