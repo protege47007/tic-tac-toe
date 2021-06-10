@@ -21,16 +21,15 @@
                     <label for="mode">Offline</label>
                     <input type="radio" name="mode" value="offline" required>
                 </fieldset>
-                <fieldset class="fs host">
-                    <label for="nickname">Host</label><br>
-                    <input type="text" name="nickname" id="hostName" placeholder="Enter Your Nickname" required>
-                </fieldset>
-    
-                <fieldset class="fs od">
+                
+                <fieldset class="fs player">
                     <label for="nickname">Identify Yourself</label><br>
-                    <input type="text" name="nickname" id="hostName" placeholder="Enter Your Nickname" required>
+                    <input type="text" name="nickname" id="name" placeholder="Identify Yourself 😏" required>
+                    <p id="nomErr" style="color: lightcoral;"> name already exists! please change or add a number.</p>
                 </fieldset>
+
                 <button id="start" type="submit">Start Game</button>
+                <span class="err" style="color: blue; display: none;">Waiting for other players!</span>
             </fieldset>
         </form>
     </div>
@@ -57,7 +56,9 @@
         <div class="status"><h3>Player <span class="turn"></span></h3></div>
         <button id="reset">Reset</button>
     </div>
-    <script src="/scripts/index.js"></script>
-    <script src="/scripts/script.js"></script>
+    
 </body>
+<script src="/scripts/jquery-3.4.1.min.js"></script>
+<script src="/scripts/index.js"></script>
+<script src="/scripts/script.js"></script>
 </html>

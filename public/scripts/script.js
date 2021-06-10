@@ -18,7 +18,7 @@ const scoreBoardChange = () => {
         let x = document.querySelector(".X");
         let value = x.innerText;
         // console.log(x.innerText);
-        x.innerText = String(Number(value) + 1)
+        x.innerText = String(Number(value) + 1);
     }
     else{
         let o = document.querySelector(".O");
@@ -90,7 +90,7 @@ function resultCheck(){
         //this checks to see if there's a wining combo then breaks the loop
         if (a === b && b === c) {
             won = true;
-            break
+            break;
         }
     }
 

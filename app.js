@@ -21,20 +21,33 @@ app.get('/', (req, res) => {
 });
 
 //record holder for users
-let user = [];
+let users = [];
 io.on('connection', (socket) => {
     console.log("a user has connected with id: " + socket.id);
-
-
-    //this initialises the function to be called on the client side
-    //for passing data
-    socket.on('connect', (data) => {    
+    
+    //emitting the message sent to all users on the server
+    socket.emit('id', socket.id);
+    
+    //receiving username
+    socket.on('nomId', (nom) => {
+        let newPl = {
+            name: nom,
+            id: socket.id
+        }
+        users.push(newPl);
+        updateUser();
+    });
     
 
-        //emitting the message sent to all users on the server
-        socket.emit('receive', data);
+    const updateUser = () => {
+        //this initialises the function to be called on the client side
+        //for passing data
+        socket.emit('usersDb', users);
+    }    
+    
+    
 
-        //broadcasting to all user except the emitiing socket
-        //socket.broadcast.emit('message', data);
-    });
+    //broadcasting to all user except the emitiing socket
+    //socket.broadcast.emit('message', data);
+    
 });
