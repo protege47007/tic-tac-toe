@@ -3,35 +3,40 @@ const turn = document.querySelector('.turn');
 
 
 //variable declarations
-let currentPl = "X";
 let active = true;
-let countX = 0;
-let countO = 0;
+
+//no longer needed
+// let currentPl = "X";
+// let countX = 0;
+// let countO = 0;
 
 
 let state = ["", "", "", "", "", "", "", "", ""];
 
 //game status prompter
 const win = () =>  currentPl + ' has won!';
-const scoreBoardChange = () => {
-    if(currentPl === 'X' ){
-        let x = document.querySelector(".X");
-        let value = x.innerText;
-        // console.log(x.innerText);
-        x.innerText = String(Number(value) + 1);
-    }
-    else{
-        let o = document.querySelector(".O");
-        let value = o.innerText;
-        // console.log(x.innerText);
-        o.innerText = String(Number(value) + 1)
-    }
-}
+
+//former scoreboard updater
+// const scoreBoardChange = () => {
+//     if(currentPl === 'X' ){
+//         let x = document.querySelector(".X");
+//         let value = x.innerText;
+//         // console.log(x.innerText);
+//         x.innerText = String(Number(value) + 1);
+//     }
+//     else{
+//         let o = document.querySelector(".O");
+//         let value = o.innerText;
+//         // console.log(x.innerText);
+//         o.innerText = String(Number(value) + 1)
+//     }
+// }
+
 const draw = () => 'Game is a draw';
 
 const plTurn = () => currentPl + "'s turn";
 
-turn.innerHTML = plTurn();
+turn.innerHTML = mode.value !== 'offline' ? plTurn() && socket.emit('status', plTurn) : plTurn(); 
 
 //function to handle the tile that has been clicked
 function sqPlayed(sqClicked, sqIndex) {
@@ -40,21 +45,12 @@ function sqPlayed(sqClicked, sqIndex) {
 }
 
 
-
-
-
-
-
 //function to handle player change after a play
 function plChange(){
-    currentPl = currentPl === "X" ? "O" : "X";
+    currentPl = currentPl === player1 ? player2 : player1;
+    currentPl.plTurnPlay();
     turn.innerHTML = plTurn();
 }
-
-
-
-
-
 
 
 //wining combinations declaration
@@ -99,7 +95,7 @@ function resultCheck(){
         //the winner is announced
         turn.innerHTML = win();
         //the scoreboard is changed
-        scoreBoardChange();
+        currentPl.UpdateScore();
         //this clears the board after a while for a fresh game
         setTimeout(() => {
             resetGame();
@@ -154,5 +150,5 @@ function resetBtn(){
 }
 
 //quering the elements we are targeting in the html 
-document.querySelectorAll('.board').forEach(e => e.addEventListener('click', sqClick));
-document.querySelector('.reset').addEventListener('click', resetBtn);
+let reset = document.querySelector('.reset').addEventListener('click', resetBtn);
+socket.emit('reset', reset);

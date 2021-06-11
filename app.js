@@ -24,30 +24,51 @@ app.get('/', (req, res) => {
 let users = [];
 io.on('connection', (socket) => {
     console.log("a user has connected with id: " + socket.id);
-    
+    let id = socket.id;
     //emitting the message sent to all users on the server
     socket.emit('id', socket.id);
     
     //receiving username
     socket.on('nomId', (nom) => {
+        if (users.length > 1) {
+            users.forEach( (e) => {
+                if (nom !== e.name) {
+                  createUser(nom, id);  
+                } else {
+                    e.id = socket.id;
+                }
+            });
+        } else {
+            createUser(nom, id);
+        }
+    });
+    
+    function createUser(nom, id) {
         let newPl = {
             name: nom,
-            id: socket.id
+            id: id
         }
         users.push(newPl);
         updateUser();
-    });
-    
-
+    }
     const updateUser = () => {
         //this initialises the function to be called on the client side
         //for passing data
         socket.emit('usersDb', users);
-    }    
+    }
     
     
+    socket.on('play', (data) => {
+        socket.emit('receivingPlay', data);
+    });
+    
+    socket.on('status', (data) =>{
+        socket.emit('UpdateStatus', data);
+    });
 
-    //broadcasting to all user except the emitiing socket
-    //socket.broadcast.emit('message', data);
+    socket.on('reset', (data) => {
+        socket.emit('Reset-Game', data);
+    });
+    
     
 });
