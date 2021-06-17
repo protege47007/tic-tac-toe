@@ -1,4 +1,8 @@
-let socket;
+// let fns = require('./script.js')
+
+
+// fns.myFunctions();
+let socket = '';
 let connectToServer = () => {
     //socket.io initialisation
     socket = io('http://localhost:3030');
@@ -7,12 +11,23 @@ let connectToServer = () => {
     socket.on('connection');
 }
 
+connectToServer();
+
+
+
 
 //end of socket.io 
 
 //initialising dom selectors
 let nom = document.querySelector('#name');
-let mode = document.querySelector('input[name="mode"]:checked');
+let radios = document.querySelectorAll("input[name='mode']");
+let mode;
+
+radios.forEach((radio) => { 
+    radio.addEventListener('change', (e) => {
+        mode = e.currentTarget.value;
+    })
+})
 let form = document.querySelector('#form');
 let nomErr = document.querySelector('#nomErr');
 
@@ -20,15 +35,15 @@ let nomErr = document.querySelector('#nomErr');
 let users = [], id;
 
 let  nick;
-form.submit( (e) => {
+$('#form').submit( (e) => {
     e.preventDefault();
     nick = nom.value;
 
-    if(mode.value === "online"){
+    if(mode == "online"){
         connectToServer();
         
         //player profile validation
-        if (users.indexOf(nick)) {
+        if (users.indexOf(nick) != -1) {
             nomErr.style.display = 'inline-block';
             return;
         } else {
@@ -37,13 +52,16 @@ form.submit( (e) => {
         }
 
         //initialising the game
-        if (users.length > 1) {
+        if (users.length < 1) {
             //input parameter is false indicating the game isn't offline
             startGame(false);
 
         } else {
             //since there won't be a second player no point in moving on in the game
             document.querySelector('.err').style.display = 'inline-block';
+            if (users.length > 1) {
+                startGame(false);
+            }
         }
     }
     else{
@@ -103,7 +121,7 @@ const PlProfile = function (user, piece) {
     //this is for when it is a player's turn to play
     //and checks if the game is offline so the computer would generate a play
     this.plTurnPlay = function () {
-        if (mode.value === offline) {
+        if (mode == "offline") {
             genX();
         } else {
             let play = document.querySelectorAll('.board').forEach(e => e.addEventListener('click', sqClick));
@@ -124,8 +142,8 @@ const PlProfile = function (user, piece) {
 
 function startGame(gameMode) {
 
-    document.querySelector('alert').style.display = 'none';
-    document.querySelector('.game').style.display = 'block';
+    document.querySelector('.alert').style.display = 'none';
+    document.querySelector('.game').style.display = 'flex';
     
     player1 = new PlProfile(users[0], 'X');
     player2 = !gameMode ? new PlProfile('COM', 'O') : new PlProfile(users[1], 'O');
@@ -149,8 +167,9 @@ const genX = function()  {
      
 }
 
-socket.on('UpdateStatus', data);
-socket.on('Reset-Game', data);
+socket.on('Reset-Game', (data)=>{
+    data;
+});
 
 
 

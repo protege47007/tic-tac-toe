@@ -1,9 +1,7 @@
 const express = require("express");
-const bp = require("body-parser");
 
 const app = express();
 
-app.use(bp.urlencoded({extended: true}));
 app.use(express.static('public'));
 
 let server = require('http').createServer(app);
@@ -25,8 +23,6 @@ let users = [];
 io.on('connection', (socket) => {
     console.log("a user has connected with id: " + socket.id);
     let id = socket.id;
-    //emitting the message sent to all users on the server
-    socket.emit('id', socket.id);
     
     //receiving username
     socket.on('nomId', (nom) => {
@@ -47,15 +43,14 @@ io.on('connection', (socket) => {
         let newPl = {
             name: nom,
             id: id
-        }
+        };
         users.push(newPl);
-        updateUser();
-    }
-    const updateUser = () => {
-        //this initialises the function to be called on the client side
-        //for passing data
         socket.emit('usersDb', users);
     }
+        //this initialises the function to be called on the client side
+        //for passing data
+        
+    
     
     
     socket.on('play', (data) => {

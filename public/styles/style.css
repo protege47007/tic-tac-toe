@@ -5,7 +5,7 @@
 }
 
 /*Body alignment*/
-body{
+body, .game{
     display: flex;
     align-content: center;
     justify-content: center;
@@ -149,7 +149,7 @@ button:focus{
     }
     
     .tile{
-        width: 33.3%;
+        width: 32.93%;
         height: 5rem;
         font-size: 2rem;
     }
@@ -206,7 +206,7 @@ button:focus{
     }
     
     .tile{
-        width: 33.3999%;
+        width: 32.93%;
         height: 5rem;
         font-size: 2rem;
     }
@@ -257,7 +257,7 @@ button:focus{
     }
     
     .tile{
-        width: 33.39%;
+        width: 33.03%;
         height: 5rem;
         font-size: 2rem;
     }
@@ -313,7 +313,7 @@ button:focus{
     }
 
     .tile {
-        width: 33.29%;
+        width: 33%;
         height: 5rem;
         font-size: 2rem;
     }
@@ -360,7 +360,7 @@ button:focus{
         width: 65%;
         height: 4rem;
         padding: .7%;
-        font-size: 2.5rem;
+        font-size: 2rem;
     }
     
     /*board definition and styling*/
@@ -370,7 +370,7 @@ button:focus{
     }
     
     .tile{
-        width: 33.9%;
+        width: 33.33%;
         height: 5rem;
         font-size: 2rem;
     }

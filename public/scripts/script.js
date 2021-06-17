@@ -1,14 +1,23 @@
 //constants declaration
+
+
 const turn = document.querySelector('.turn');
 
 
 //variable declarations
 let active = true;
-
+let currentPl;
 //no longer needed
-// let currentPl = "X";
+//  = "X";
 // let countX = 0;
 // let countO = 0;
+
+// console.log(socketFunc());
+
+// let socket = socketFunc();
+
+
+// console.log();
 
 
 let state = ["", "", "", "", "", "", "", "", ""];
@@ -34,9 +43,12 @@ const win = () =>  currentPl + ' has won!';
 
 const draw = () => 'Game is a draw';
 
-const plTurn = () => currentPl + "'s turn";
+const plTurn = () =>  currentPl + "'s turn";
 
-turn.innerHTML = mode.value !== 'offline' ? plTurn() && socket.emit('status', plTurn) : plTurn(); 
+
+
+
+turn.innerHTML = plTurn(); 
 
 //function to handle the tile that has been clicked
 function sqPlayed(sqClicked, sqIndex) {
@@ -150,5 +162,5 @@ function resetBtn(){
 }
 
 //quering the elements we are targeting in the html 
-let reset = document.querySelector('.reset').addEventListener('click', resetBtn);
+let reset = document.querySelector('#reset').addEventListener('click', resetBtn);
 socket.emit('reset', reset);
