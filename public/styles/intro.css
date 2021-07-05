@@ -1,12 +1,36 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body{
+    width: 70%;
+    height: 70vh;
+    margin: 2% auto 0;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
 .alert{
-    width: 50%;
-    height: 50vh;
+    width: 85%;
+    height: 60vh;
     padding: 5%;
     margin: 1rem auto;
+    display: flex;
+    flex-direction: row;
+    background: burlywood;
 }
 
 #form{
     padding: 5%;
+    width: 60%;
+    height: 100%;
+}
+.players{
+    width: 35%;
+    height: 25%;
+    max-height: 100%;
+    overflow-y: auto;
 }
 
 .fs {
@@ -14,24 +38,14 @@
     padding: 2%; 
 }
 
-.host {
-    margin: 1rem 0;
-}
-#hostName{
-    display: block;
-    height: 2rem;
-    width: 70%;
-    margin: 1% 0;
-}
-
-.od{
+#nomErr{
     display: none;
+    color: lightcoral;
 }
 
 #start {
     padding: 1%;
     margin: .5rem 0;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
     background-color: #fff;
     color: rgba(0, 0, 0);
     border: 1px solid #000;
@@ -42,7 +56,30 @@
     background-color: #000;
     color: #fff;
 }
-.game{
+
+#start:disabled{
+    text-decoration: line-through;
+}
+
+.confirm{
+    display: none;
     width: 100%;
-    height: 100vh;
+    height: 35%;
+    z-index: 2;
+    background-color: rgba(0, 0, 0, .3);
+}
+
+.confirm > p {
+    font-size: 2rem;
+}
+
+#yes, #no{
+    padding: 3%;
+    font-size: 1.4rem;
+    border: 1px solid #000;
+}
+
+#yes{
+    background-color: #000;
+    color: #fff;
 }

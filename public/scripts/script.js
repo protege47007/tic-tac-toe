@@ -1,12 +1,13 @@
 //constants declaration
 
 
-const turn = document.querySelector('.turn');
+const turn = document.querySelector('.newStatus');
 
 
 //variable declarations
 let active = true;
 let currentPl;
+
 //no longer needed
 //  = "X";
 // let countX = 0;
@@ -156,9 +157,25 @@ function resetGame(){
 
 // this resets the board and the scoreboard
 function resetBtn(){
+   mode == 'online' ? prompt() : resetEntireGame();
+}
+
+function resetEntireGame(){
     resetGame();
-    document.querySelector('.O').innerText = String('0');
-    document.querySelector('.X').innerText = String('0');
+    $('.O').text('0');
+    $('.X').text('0');
+}
+
+function prompt(){
+    $('#prompt').css('display', 'flex');
+    
+    $('#yes').on('click', (e) => {
+        resetEntireGame();
+    });
+    
+    $('#no').on('click', () => {
+        $('#prompt').css('display', 'none');
+    });
 }
 
 //quering the elements we are targeting in the html 

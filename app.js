@@ -1,8 +1,12 @@
 const express = require("express");
+const bp = require('body-parser');
+const ejs = require('ejs');
 
 const app = express();
 
 app.use(express.static('public'));
+app.set('view engine', 'ejs');
+app.use(bp.urlencoded({extended: true}));
 
 let server = require('http').createServer(app);
 
@@ -15,7 +19,7 @@ server.listen(3030, () => {
 
 //home router
 app.get('/', (req, res) => {
-    res.sendFile(__dirname + "/index.html"); 
+    res.render 
 });
 
 //record holder for users

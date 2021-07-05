@@ -21,11 +21,11 @@ body, .game{
     border: 1px solid #000;
 }
 
-.X, .O{
+.tomato{
     color: tomato;
 }
 
-#x, #o{
+.score{
     padding: 1%;
 }
 
@@ -116,11 +116,6 @@ button:focus{
     border: 1px dotted #000;
 }
 
-
-
-.game{
-    display: none;
-}
 
 
 

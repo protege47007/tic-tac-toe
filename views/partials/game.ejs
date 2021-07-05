@@ -1,0 +1,30 @@
+    <!--game board layout-->
+    <div class="scoreboard">
+        <h4 class="score">Player <span class="pl-one"><%= player1-name %> </span>
+            <span id="pl1-score" class="tomato">0</span>
+        </h4>
+        <span class="colon">:</span>
+        <h4 class="score"><span id="pl2-score" class='tomato'>0</span>
+            Player <span class="pl-two">OOO</span>
+        </h4>
+    </div>
+    <div class="board">
+        <div class="tile one" data-index="0"></div>
+        <div class="tile two" data-index="1"></div>
+        <div class="tile three" data-index="2"></div>
+        <div class="tile four" data-index="3"></div>
+        <div class="tile five" data-index="4"></div>
+        <div class="tile six" data-index="5"></div>
+        <div class="tile seven" data-index="6"></div>
+        <div class="tile eight" data-index="7"></div>
+        <div class="tile nine" data-index="8"></div>
+    </div>
+    <div class="status">
+        <h3>Player <span class="newStatus"></span></h3>
+    </div>
+    <button id="reset">Reset</button>
+    <div class="confirm">
+        <p>Are you sure?</p>
+        <button id="no">No</button>
+        <button id="yes">Yes</button>
+    </div>

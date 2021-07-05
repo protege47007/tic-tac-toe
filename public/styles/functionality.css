@@ -1,0 +1,25 @@
+#prompt {
+    display: none;
+    z-index: 3;
+    width: 100%;
+    justify-content: center;
+    margin: auto;
+    font-size: 2rem;
+    background-color: rgba(255, 255, 255, .4);
+}
+#yes{
+    background-color: #000;
+    color: #fff;
+}
+#no{
+    background: #fff;
+    color:#000;
+    border: 1px solid #000;
+}
+
+#prompt > button{
+    font-size: 1.5rem;
+}
+#yes:hover, #no:hover{
+    cursor: pointer;
+}
