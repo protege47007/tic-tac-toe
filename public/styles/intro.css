@@ -1,14 +1,7 @@
-*{
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-}
-
 body{
-    width: 70%;
+    width: 50% !important;
     height: 70vh;
     margin: 2% auto 0;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 .alert{

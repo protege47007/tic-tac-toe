@@ -9,12 +9,10 @@
   "author": "Adewumi David",
   "license": "ISC",
   "dependencies": {
-    "body-parser": "^1.19.0",
     "ejs": "^3.1.6",
     "express": "^4.17.1",
     "socket.io": "^4.1.2"
   },
-  "devDependencies": {},
   "repository": {
     "type": "git",
     "url": "https://github.com/protege47007/"

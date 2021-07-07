@@ -1,6 +1,22 @@
+//player profile declaration **new*
+const PlayerProfile = function (name, piece){
+    this.name = name;
+    this.score = 0;
+    this.piece = piece;
+
+    this.won = () => {
+        this.score++;
+        this.piece = this.piece === 'X' ? 'O' : 'X';
+    }
+}
+
+//socket.io initialisation
+const socket = io('http://localhost:3030');
+
+//this activates the connection function on the server side
+socket.on('connection');
+
 //constants declaration
-
-
 const turn = document.querySelector('.newStatus');
 
 
@@ -8,17 +24,10 @@ const turn = document.querySelector('.newStatus');
 let active = true;
 let currentPl;
 
-//no longer needed
-//  = "X";
-// let countX = 0;
-// let countO = 0;
+//players initialisations ***Updated**
+playerOne = new PlayerProfile(plNom, 'X');
+playerTwo = new PlayerProfile('COM &#9760', 'O');
 
-// console.log(socketFunc());
-
-// let socket = socketFunc();
-
-
-// console.log();
 
 
 let state = ["", "", "", "", "", "", "", "", ""];
@@ -26,21 +35,7 @@ let state = ["", "", "", "", "", "", "", "", ""];
 //game status prompter
 const win = () =>  currentPl + ' has won!';
 
-//former scoreboard updater
-// const scoreBoardChange = () => {
-//     if(currentPl === 'X' ){
-//         let x = document.querySelector(".X");
-//         let value = x.innerText;
-//         // console.log(x.innerText);
-//         x.innerText = String(Number(value) + 1);
-//     }
-//     else{
-//         let o = document.querySelector(".O");
-//         let value = o.innerText;
-//         // console.log(x.innerText);
-//         o.innerText = String(Number(value) + 1)
-//     }
-// }
+
 
 const draw = () => 'Game is a draw';
 
@@ -155,29 +150,65 @@ function resetGame(){
     document.querySelectorAll('.tile').forEach( e => e.innerHTML= "");
 }
 
+//this resets the board but not the scoreoard ***Updated**
+function resetGame(){
+    active = true;
+    currentPl = playerOne;
+    state = ["", "", "", "", "", "", "", "", ""];
+    status.innerHTML = plTurn();
+    document.querySelectorAll('.tile').forEach( e => e.innerHTML= "");
+}
+
 // this resets the board and the scoreboard
 function resetBtn(){
-   mode == 'online' ? prompt() : resetEntireGame();
+    document.querySelector('.confirm').style.display = 'flex';
+    
+    document.querySelector('#yes').addEventListener('click', resetEntireGame);
+    
+    document.querySelector('#no').addEventListener('click', () => {
+        document.querySelector('.confirm').style.display = 'none';
+    });
 }
 
 function resetEntireGame(){
     resetGame();
-    $('.O').text('0');
-    $('.X').text('0');
-}
-
-function prompt(){
-    $('#prompt').css('display', 'flex');
-    
-    $('#yes').on('click', (e) => {
-        resetEntireGame();
-    });
-    
-    $('#no').on('click', () => {
-        $('#prompt').css('display', 'none');
-    });
+    playerTwo.score = 0;
+    playerOne.score = 0;
+    updateScoreBoard();
 }
 
 //quering the elements we are targeting in the html 
 let reset = document.querySelector('#reset').addEventListener('click', resetBtn);
 socket.emit('reset', reset);
+
+
+
+
+//no longer needed
+//  = "X";
+// let countX = 0;
+// let countO = 0;
+
+// console.log(socketFunc());
+
+// let socket = socketFunc();
+
+
+// console.log();
+
+
+//former scoreboard updater
+// const scoreBoardChange = () => {
+//     if(currentPl === 'X' ){
+//         let x = document.querySelector(".X");
+//         let value = x.innerText;
+//         // console.log(x.innerText);
+//         x.innerText = String(Number(value) + 1);
+//     }
+//     else{
+//         let o = document.querySelector(".O");
+//         let value = o.innerText;
+//         // console.log(x.innerText);
+//         o.innerText = String(Number(value) + 1)
+//     }
+// }
