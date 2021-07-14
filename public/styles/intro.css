@@ -1,34 +1,50 @@
-body{
-    width: 50% !important;
-    height: 70vh;
-    margin: 2% auto 0;
-}
-
 .alert{
-    width: 85%;
+    width: 100%;
     height: 60vh;
     padding: 5%;
     margin: 1rem auto;
     display: flex;
     flex-direction: row;
-    background: burlywood;
 }
 
-#form{
+#main{
     padding: 5%;
     width: 60%;
     height: 100%;
+    position: relative;
+    border: 1px solid #000;
+    margin: auto;
 }
-.players{
-    width: 35%;
-    height: 25%;
-    max-height: 100%;
-    overflow-y: auto;
+.btns{
+    display: block;
+    position: absolute;
+    bottom: 1rem;
+    width: 80%;
+}
+.mode{
+    margin: 5% 0;
+}
+.game-mode{
+    height: 7rem;
+}
+.player-details {
+    height: 5rem; 
 }
 
-.fs {
-    height: 5rem;
-    padding: 2%; 
+.fs{
+    padding: 2%;
+}
+.sec{
+    color: crimson;
+}
+
+#name{
+    width: 90%;
+    padding: 1.5%;
+    margin: 3% 0;
+}
+#main, .players, #pl-main, .fs, #join, #start{
+    border-radius: .2rem;
 }
 
 #nomErr{
@@ -36,43 +52,18 @@ body{
     color: lightcoral;
 }
 
-#start {
-    padding: 1%;
-    margin: .5rem 0;
-    background-color: #fff;
-    color: rgba(0, 0, 0);
+#join{
+    padding: 2%;
+    font-size: 1.05rem;
     border: 1px solid #000;
     cursor: pointer;
+    background-color: #fff;
+    color: #000;
 }
 
-#start:hover {
-    background-color: #000;
-    color: #fff;
+#join:hover{
+    border-color: darkcyan;
+    color: darkcyan;
 }
 
-#start:disabled{
-    text-decoration: line-through;
-}
 
-.confirm{
-    display: none;
-    width: 100%;
-    height: 35%;
-    z-index: 2;
-    background-color: rgba(0, 0, 0, .3);
-}
-
-.confirm > p {
-    font-size: 2rem;
-}
-
-#yes, #no{
-    padding: 3%;
-    font-size: 1.4rem;
-    border: 1px solid #000;
-}
-
-#yes{
-    background-color: #000;
-    color: #fff;
-}

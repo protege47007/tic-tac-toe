@@ -1,9 +1,4 @@
-<% include('./partials/headers/online-header.ejs')  %>
-<% include('./partials/body/game.ejs')  %>
-
-<div id="prompt">
-    <p>are you sure?</p>
-    <span><button id='yes'>yes</button> <button id='no'>no</button></span>
-</div>
-
-<% include('./partials/footers/online-footer.ejs')  %>
+<%- include('./partials/headers/online-header.ejs')  -%>
+<%- inlcude('./partials/body/players.ejs') -%> 
+<%- include('./partials/body/game.ejs')  -%>
+<%- include('./partials/footers/online-footer.ejs')  -%>

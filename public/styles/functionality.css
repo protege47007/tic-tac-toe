@@ -1,4 +1,4 @@
-#prompt {
+.confirm {
     display: none;
     z-index: 3;
     width: 100%;
@@ -17,9 +17,29 @@
     border: 1px solid #000;
 }
 
-#prompt > button{
+.confirm > button{
     font-size: 1.5rem;
 }
 #yes:hover, #no:hover{
     cursor: pointer;
+}
+
+.players{
+    display: block;
+    z-index: 3;
+    width: 35%;
+    height: 100%;
+    max-height: 100%;
+    overflow-y: auto;
+    border: 1px solid #000;
+    margin-left: 1%;
+    padding: 2%;
+}
+#pl-main{
+    text-align: center;
+    color: crimson;
+}
+
+.player-details{
+    margin: 5% 0;
 }

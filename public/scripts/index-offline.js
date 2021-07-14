@@ -6,7 +6,6 @@ const PlayerProfile = function (name, piece){
 
     this.won = () => {
         this.score++;
-        this.piece = this.piece === 'X' ? 'O' : 'X';
     }
 }
 //getAttribute('data-index')to check if the text value is '', if true: pass X||O else GenX()
@@ -26,7 +25,6 @@ const genX = function()  {
             if( i == rand ){
                 sqPlayed(e, i);
                 resultCheck();
-                break;
             }
         })
     }
@@ -36,14 +34,19 @@ const genX = function()  {
 
 //constants declaration
 const plNom = document.querySelector('.pl-one').textContent;
+let playerOne = new PlayerProfile(plNom, 'X');
+let playerTwo = new PlayerProfile('COM', 'O');
+
 const status = document.querySelector('.newStatus');
 
 //variable declarations
 let active = true;
-let currentPl;
-document.querySelector('.pl-two').text = playerTwo.name;
-playerOne = new PlayerProfile(plNom, 'X');
-playerTwo = new PlayerProfile('COM &#9760', 'O');
+document.querySelector('.pl-two').textContent = playerTwo.name;
+let currentPl = playerOne; 
+let startPl = playerOne;
+const changeStartPlayer = function (){
+    startPl == playerOne ? startPl = playerTwo: startPl = playerOne;
+}
 
 let state = ["", "", "", "", "", "", "", "", ""];
 
@@ -52,13 +55,19 @@ const win = () =>  `${currentPl.name}  has just won!`;
 
 const draw = () => 'Game has ended in a draw';
 
-const plTurn = () => ` ${currentPl.name}'s turn`;
-
-status.innerHTML = plTurn(); 
+let plTurn = () => `its ${currentPl.name}'s turn`;
+status.innerHTML = plTurn();
+ 
 
 const updateScoreBoard = () => {
-    document.querySelector('#pl1-score').text = String(playerOne.score);
-    document.querySelector('#pl2-score').text = String(playerTwo.score);
+    document.querySelector('#pl1-score').textContent = String(playerOne.score);
+    document.querySelector('#pl2-score').textContent = String(playerTwo.score);
+    if (playerOne.piece === 'X') {
+        playerTwo.piece = 'X'; playerOne.piece = 'O'
+    } else {
+        playerOne.piece = 'X'; playerTwo.piece = 'O'
+    }
+    
 }
 
 //function to handle the tile that has been clicked
@@ -72,12 +81,13 @@ function sqPlayed(sqClicked, sqIndex) {
 function plChange(){
     if (currentPl === playerOne) {
         currentPl = playerTwo;
-        genX();
+        setTimeout(() => {
+            genX();
+        }, 1000);
     } else {
         currentPl = playerOne;
     }
-    currentPl = currentPl === playerOne ? playerTwo : playerOne;
-    status.innerHTML = plTurn();
+    status.textContent = plTurn();
 }
 
 
@@ -130,17 +140,19 @@ function resultCheck(){
             resetGame();
         }, 1000);
         active = false;
+        changeStartPlayer();
         return;
     }
 
     //in the event of a draw, this annouces there's a draw and clears the board
     let gameDrawn = !state.includes("");
     if (gameDrawn) {
-        turn.innerHTML = draw();
+        status.innerHTML = draw();
         setTimeout(() => {
             resetGame();
         }, 1000);
         active = false;
+        changeStartPlayer();
         return;
     }
 
@@ -165,7 +177,7 @@ function sqClick(e){
 //this resets the board but not the scoreoard
 function resetGame(){
     active = true;
-    currentPl = playerOne;
+    currentPl = startPl;
     state = ["", "", "", "", "", "", "", "", ""];
     status.innerHTML = plTurn();
     document.querySelectorAll('.tile').forEach( e => e.innerHTML= "");
@@ -184,6 +196,7 @@ function resetBtn(){
 
 function resetEntireGame(){
     resetGame();
+    document.querySelector('.confirm').style.display = 'none';
     playerTwo.score = 0;
     playerOne.score = 0;
     updateScoreBoard();
@@ -192,7 +205,7 @@ function resetEntireGame(){
 
 //quering the elements we are targeting in the html 
 document.querySelector('#reset').addEventListener('click', resetBtn);
-document.querySelectorAll('.tile').addEventListener('click', sqClick);
+document.querySelectorAll('.tile').forEach( e => e.addEventListener('click', sqClick));
 
 //former scoreboard updater
 // const scoreBoardChange = () => {

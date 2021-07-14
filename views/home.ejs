@@ -1,32 +1,29 @@
-<% include('./partials/headers/intro-header.ejs')  %> 
+<%- include('./partials/headers/intro-header.ejs')  -%> 
 <div class="alert">
-        <form id="form">
-            <fieldset >
-                <fieldset class="fs">
-                    <legend>Game Mode</legend>
-                    <label for="mode">Online (Two Players)</label>
-                    <input type="radio" name="mode" value="online" required>
-                    <label for="mode">Vs Computer</label>
-                    <input type="radio" name="mode" value="offline" required>
-                </fieldset>
-                
-                <fieldset class="fs player-details">
-                    <label for="nickname">Identify Yourself</label><br>
-                    <input type="text" name="nickname" id="name" placeholder="Identify Yourself 😏" required>
-                    <p id="nomErr" > name already exists! please change or add a number.</p>
-                </fieldset>
-
-                <button id="start" type="submit" disabled>Start Game</button>
+    <form id="main" action="/check" method="POST">
+       
+            <fieldset class="fs game-mode">
+                <label class="sec">Game Mode</label><br>
+                <label for="mode">Online (Two Players)</label>
+                <input type="radio" class="mode" name="mode" value="online" required>
+                <br>
+                <label for="mode">Vs Computer</label>
+                <input type="radio" class="mode" name="mode" value="offline" required>
             </fieldset>
-        </form>
-        <div class="players"></div>
-    </div>
-    <!--End of players intialisation-->
 
-    <script>
-        
+            <fieldset class="fs player-details">
+                <label class="sec" for="nickname">Identify Yourself</label><br>
+                <input type="text" name="nickname" id="name" placeholder="Enter your name 😏" required>
+                <p id="nomErr"><%= err %></p>
+            </fieldset>
+            <div class="btns">
+                <button id="join" type="submit">Join Game</button>
+            </div>
+    </form>
+</div>
 
-
-    </script>
-
-    <% include('./partials/footers/footer.ejs')  %>
+<!--End of players intialisation-->
+<script>
+    
+</script>
+<%- include('./partials/footers/footer.ejs')  -%>

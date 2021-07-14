@@ -10,12 +10,6 @@ const PlayerProfile = function (name, piece){
     }
 }
 
-//socket.io initialisation
-const socket = io('http://localhost:3030');
-
-//this activates the connection function on the server side
-socket.on('connection');
-
 //constants declaration
 const turn = document.querySelector('.newStatus');
 

@@ -1,11 +1,11 @@
     <!--game board layout-->
     <div class="scoreboard">
-        <h4 class="score">Player <span class="pl-one"><%= player1-name %> </span>
+        <h4 class="score"><span class="pl-one"><%= player1 %> </span>
             <span id="pl1-score" class="tomato">0</span>
         </h4>
-        <span class="colon">:</span>
+        <span class="colon">Vs</span>
         <h4 class="score"><span id="pl2-score" class='tomato'>0</span>
-            Player <span class="pl-two">OOO</span>
+            <span class="pl-two"><%= player2 %></span>
         </h4>
     </div>
     <div class="board">
@@ -20,7 +20,7 @@
         <div class="tile nine" data-index="8"></div>
     </div>
     <div class="status">
-        <h3>Player <span class="newStatus"></span></h3>
+        <h3><span class="newStatus">XO</span></h3>
     </div>
     <button id="reset">Reset</button>
     <div class="confirm">

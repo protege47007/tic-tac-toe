@@ -1,8 +1,3 @@
-*{
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-}
 
 /*Body alignment*/
 body, .game{
@@ -11,7 +6,6 @@ body, .game{
     justify-content: center;
     flex-direction: column;
     margin: auto;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 .scoreboard{

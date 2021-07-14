@@ -4,3 +4,16 @@
     box-sizing: border-box;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
+
+body{
+    width: 50%;
+    height: 70vh;
+    margin: 2% auto 0;
+}
+footer{
+    text-align: center;
+    opacity: .6;
+}
+footer:hover{
+    opacity: 1;;
+}
