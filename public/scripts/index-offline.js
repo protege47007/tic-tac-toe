@@ -58,6 +58,15 @@ const draw = () => 'Game has ended in a draw';
 let plTurn = () => `its ${currentPl.name}'s turn`;
 status.innerHTML = plTurn();
  
+playerOne.play = function(){
+    document.querySelectorAll('.tile').forEach( e => e.addEventListener('click', sqClick));
+    return;
+}
+playerOne.noPlay = function () {
+    document.querySelectorAll('.tile').forEach( e => e.removeEventListener('click', sqClick));
+    return;
+}
+playerOne.play();
 
 const updateScoreBoard = () => {
     document.querySelector('#pl1-score').textContent = String(playerOne.score);
@@ -80,12 +89,14 @@ function sqPlayed(sqClicked, sqIndex) {
 //function to handle player change after a play
 function plChange(){
     if (currentPl === playerOne) {
+        currentPl.noPlay();
         currentPl = playerTwo;
         setTimeout(() => {
             genX();
         }, 1000);
     } else {
         currentPl = playerOne;
+        currentPl.play();
     }
     status.textContent = plTurn();
 }
@@ -205,20 +216,3 @@ function resetEntireGame(){
 
 //quering the elements we are targeting in the html 
 document.querySelector('#reset').addEventListener('click', resetBtn);
-document.querySelectorAll('.tile').forEach( e => e.addEventListener('click', sqClick));
-
-//former scoreboard updater
-// const scoreBoardChange = () => {
-//     if(currentPl === 'X' ){
-//         let x = document.querySelector(".X");
-//         let value = x.innerText;
-//         // console.log(x.innerText);
-//         x.innerText = String(Number(value) + 1);
-//     }
-//     else{
-//         let o = document.querySelector(".O");
-//         let value = o.innerText;
-//         // console.log(x.innerText);
-//         o.innerText = String(Number(value) + 1)
-//     }
-// }

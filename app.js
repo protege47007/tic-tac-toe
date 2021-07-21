@@ -1,31 +1,42 @@
+//dependecies declaration into constants
 const express = require("express");
 const ejs = require('ejs');
 const port = process.env.PORT || 3030;
 const app = express();
 
+//setting up express to use body-parser, static files, ejs templating engine
 app.use(express.static('public'));
 app.set('view engine', 'ejs');
 app.use(express.urlencoded({extended: true}));
 
+//creating our server
 let server = require('http').createServer(app);
-
-let io = require('socket.io')(server, {cors: {origin: "*"}});
+//requiring our socket dependencies
+const io = require('socket.io')(server, {cors: {origin: "*"}});
 
 
 //record holder for users
-let users = []; let exists = false; let fail;
+let users = [];
+
+//our form prompter for error
+let exists = false; let fail;
 exists == true ? fail = 'name already exists! please change or add a number.' : '';
+//variable to carry names globally
 let x;
+
 //home router
 app.get('/', (req, res) => {
     res.render('home', {err: fail});
 });
 
+//form's post route to check if name exists and also game mode
 app.post('/check', (req, res) => {
     let mode = req.body.mode;
     x = req.body.nickname;
     
+    //checks the game mode 
     if (mode == 'online') {
+        //checking our database to see if user's inputed name already exists
         if (users.length > 0 && users.indexOf(x)) {
             exists = true;
             res.redirect('/');        
@@ -38,6 +49,7 @@ app.post('/check', (req, res) => {
     }
 });
 
+//offline game mode route getter
 app.get('/offline-game', (req, res) => {
     
     res.render('offline', {
@@ -46,6 +58,7 @@ app.get('/offline-game', (req, res) => {
     });
 });
 
+//online game mode route getter
 app.get('/online-game', (req, res) => {
     let p1 = users[0];
     let p2 = users[1];
@@ -56,11 +69,16 @@ app.get('/online-game', (req, res) => {
     });
 });
 
-
+//socket.io server swop
 io.on('connection', (socket) => {
     console.log("a user has connected with id: " + socket.id);
     let id = socket.id;
     
+    socket.on('ClickedTile', (target) => {
+        socket.emit('play', target);
+    });
+
+
     //receiving username
     socket.on('newUser', (nom) => {
         if (users.length > 1) {
@@ -90,9 +108,7 @@ io.on('connection', (socket) => {
     
     
     
-    socket.on('play', (data) => {
-        socket.emit('receivingPlay', data);
-    });
+
     
     socket.on('status', (data) =>{
         socket.emit('UpdateStatus', data);
