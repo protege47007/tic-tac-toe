@@ -26,7 +26,7 @@ const genX = function()  {
                 sqPlayed(e, i);
                 resultCheck();
             }
-        })
+        });
     }
      
 }
@@ -46,6 +46,7 @@ let currentPl = playerOne;
 let startPl = playerOne;
 const changeStartPlayer = function (){
     startPl == playerOne ? startPl = playerTwo: startPl = playerOne;
+    
 }
 
 let state = ["", "", "", "", "", "", "", "", ""];
@@ -192,6 +193,7 @@ function resetGame(){
     state = ["", "", "", "", "", "", "", "", ""];
     status.innerHTML = plTurn();
     document.querySelectorAll('.tile').forEach( e => e.innerHTML= "");
+    startPl == playerTwo ? genX() : playerOne.play();
 }
 
 // this resets the board and the scoreboard
@@ -216,3 +218,4 @@ function resetEntireGame(){
 
 //quering the elements we are targeting in the html 
 document.querySelector('#reset').addEventListener('click', resetBtn);
+document.querySelector('.players').style.display = 'none';

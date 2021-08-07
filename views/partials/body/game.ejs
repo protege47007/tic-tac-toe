@@ -1,30 +1,41 @@
-    <!--game board layout-->
-    <div class="scoreboard">
-        <h4 class="score"><span class="pl-one"><%= player1 %> </span>
-            <span id="pl1-score" class="tomato">0</span>
-        </h4>
-        <span class="colon">Vs</span>
-        <h4 class="score"><span id="pl2-score" class='tomato'>0</span>
-            <span class="pl-two"><%= player2 %></span>
-        </h4>
-    </div>
-    <div class="board">
-        <div class="tile one" data-index="0"></div>
-        <div class="tile two" data-index="1"></div>
-        <div class="tile three" data-index="2"></div>
-        <div class="tile four" data-index="3"></div>
-        <div class="tile five" data-index="4"></div>
-        <div class="tile six" data-index="5"></div>
-        <div class="tile seven" data-index="6"></div>
-        <div class="tile eight" data-index="7"></div>
-        <div class="tile nine" data-index="8"></div>
-    </div>
-    <div class="status">
-        <h3><span class="newStatus">XO</span></h3>
-    </div>
-    <button id="reset">Reset</button>
-    <div class="confirm">
-        <p>Are you sure?</p>
+<!-- player waiting screen -->
+<div class="players">
+    <p id="pl-main">***Players*** <br> waiting for other player</p>
+    <p id="tab"></p>
+</div>
+
+<!--game board layout-->
+<div class="scoreboard">
+    <h4 class="score"><span class="pl-one"><%= player1 %></span>
+        <span id="pl1-score" class="tomato">0</span>
+    </h4>
+    <span class="colon">Vs</span>
+    <h4 class="score"><span id="pl2-score" class='tomato'>0</span>
+        <span class="pl-two"><%= player2 %></span>
+    </h4>
+</div>
+<div class="board">
+    <div class="tile one" data-index="0"></div>
+    <div class="tile two" data-index="1"></div>
+    <div class="tile three" data-index="2"></div>
+    <div class="tile four" data-index="3"></div>
+    <div class="tile five" data-index="4"></div>
+    <div class="tile six" data-index="5"></div>
+    <div class="tile seven" data-index="6"></div>
+    <div class="tile eight" data-index="7"></div>
+    <div class="tile nine" data-index="8"></div>
+</div>
+<div class="status">
+    <h3><span class="newStatus">XO</span></h3>
+</div>
+
+<button id="reset">Reset</button>
+
+<!-- game resset prompter -->
+<div class="confirm">
+    <p>Are you sure?</p>
+    <div class="btn-group">
         <button id="no">No</button>
         <button id="yes">Yes</button>
     </div>
+</div>

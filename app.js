@@ -19,8 +19,12 @@ const io = require('socket.io')(server, {cors: {origin: "*"}});
 let users = [];
 
 //our form prompter for error
-let exists = false; let fail;
-exists == true ? fail = 'name already exists! please change or add a number.' : '';
+let exists = false; 
+let fail;
+const errNote = () => {
+   return exists == true ? fail = 'name already exists! please change or add a number.':'';
+}
+
 //variable to carry names globally
 let x;
 
@@ -37,11 +41,13 @@ app.post('/check', (req, res) => {
     //checks the game mode 
     if (mode == 'online') {
         //checking our database to see if user's inputed name already exists
-        if (users.length > 0 && users.indexOf(x)) {
+        if (users.length > 0 && users.indexOf(x) != -1) {
             exists = true;
+            errNote();
             res.redirect('/');        
         }else{
         users.push(x);
+        console.log('getter route', users);
         res.redirect('/online-game');
         }
     } else {        
@@ -62,69 +68,63 @@ app.get('/offline-game', (req, res) => {
 app.get('/online-game', (req, res) => {
     let p1 = users[0];
     let p2 = users[1];
-
-    res.render('online', {
+    res.render('online',
+    {
         player1: p1,
         player2: p2
     });
 });
 
+
+
+let profiles = [];
 //socket.io server swop
-io.on('connection', (socket) => {
-    console.log("a user has connected with id: " + socket.id);
-    let id = socket.id;
-    
-    socket.on('ClickedTile', (target) => {
-        socket.emit('play', target);
+io.on("connection", (socket) => {
+  socket.join('game-room')
+  socket.emit('id', socket.id);
+  
+  
+  let id = socket.id;
+  socket.username = x;
+
+  let b = {
+    id: socket.id,
+    name: x,
+  };
+  profiles.push(b);
+
+
+  io.to('game-room').emit('userDb', profiles);
+  console.log(profiles);
+  
+
+  socket.on("ClickedTile", (e) => {
+    io.to('game-room').emit("play", e);
+  });
+
+
+  socket.on("disconnect", (data) => {
+    profiles.forEach((e, i) => {
+      if (e.id === socket.id) {
+        users.splice(users.indexOf(e.name), 1);
+        profile.splice(i, 1);
+        io.to('game-room').emit("usersDb", profiles);
+      }
     });
+  });
 
 
-    //receiving username
-    socket.on('newUser', (nom) => {
-        if (users.length > 1) {
-            users.forEach( (e) => {
-                if (nom !== e.name) {
-                  createUser(nom, id);  
-                } else {
-                    e.id = socket.id;
-                }
-            });
-        } else {
-            createUser(nom, id);
-        }
-    });
-    
-    function createUser(nom, id) {
-        let newPl = {
-            name: nom,
-            id: id
-        };
-        users.push(newPl);
-        socket.emit('usersDb', users);
-    }
-        //this initialises the function to be called on the client side
-        //for passing data
-        
-    
-    
-    
-
-    
-    socket.on('status', (data) =>{
-        socket.emit('UpdateStatus', data);
-    });
-
-    socket.on('reset', (data) => {
-        socket.emit('Reset-Game', data);
-    });
-    
+  socket.on("reset", () => {
+    io.to('game-room').emit("Reset-Game");
+  });
 
 
-    socket.on('newUser', (nom) => {
-        socket.emit('append', nom);
-    });
+  socket.on('text', (e)=>{
+      io.to('game-room').emit('new', e);
+  });
 });
-    
+   
+//server listener
 server.listen(port, () => {
     console.log("SERVER is listening on port: 3030 or ", port);
 });

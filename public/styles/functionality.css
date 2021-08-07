@@ -1,11 +1,20 @@
+body{
+    position: relative;
+}
 .confirm {
+    position: absolute;
+    top: 20%;
+    left: 15%;
     display: none;
     z-index: 3;
-    width: 100%;
+    width: 70%;
+    height: 15rem;
     justify-content: center;
-    margin: auto;
+    align-items: center;
     font-size: 2rem;
-    background-color: rgba(255, 255, 255, .4);
+    flex-direction: column;
+    /* background-color: rgba(255, 255, 255, .4); */
+    background-color: chartreuse;
 }
 #yes{
     background-color: #000;
@@ -17,18 +26,25 @@
     border: 1px solid #000;
 }
 
-.confirm > button{
+#yes, #no{
+    width: 5rem;
     font-size: 1.5rem;
+    padding: 5%;
+    border-radius: 5%;
 }
 #yes:hover, #no:hover{
     cursor: pointer;
 }
 
 .players{
+    position: absolute;
+    top: 40%;
+    left: 30%;
     display: block;
     z-index: 3;
+    background-color: rgba(255, 255, 255, .4);
     width: 35%;
-    height: 100%;
+    height: 20%;
     max-height: 100%;
     overflow-y: auto;
     border: 1px solid #000;
@@ -40,8 +56,9 @@
     color: crimson;
 }
 
-.player-details{
-    margin: 5% 0;
+.active{
+    cursor: pointer;
 }
-
-
+.active:hover{
+    opacity: .7;
+}

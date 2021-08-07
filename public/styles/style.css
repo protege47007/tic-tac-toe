@@ -1,6 +1,7 @@
 
 /*Body alignment*/
 body, .game{
+    position: relative;
     display: flex;
     align-content: center;
     justify-content: center;
@@ -11,6 +12,8 @@ body, .game{
 .scoreboard{
     margin: 1rem auto;
     display: flex;
+    align-items: center;
+    justify-content: center;
     flex-direction: row;
     border: 1px solid #000;
 }
@@ -30,55 +33,54 @@ body, .game{
     justify-content: center;
     text-align: center;
     font-weight: 900;
+    height: calc(100%/3);
+    flex: 1 1 33%;
+    font-size: 2rem;
 }
 
 /*board definition and styling*/
 .board{
     margin: 2rem auto;
     box-shadow: 2px 2px 4px #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
 }
 
 /* tile styling*/
-.one {
+.one{
+    background-color: thistle;
+}
+.two{
+    background-color: teal;
+}
+.three{
     background-color: tomato;
 }
-
-.two {
-    background-color: red;
+.four{
+    background-color: turquoise;
 }
-
-.three {
-    background-color: orange;
+.five{
+    background-color: violet;
 }
-
-.four {
-    background-color: orangered;
+.six{
+    background-color: wheat;
 }
-
-.five {
-    background-color: peru;
+.seven{
+    background-color: whitesmoke;
 }
-
-.six {
+.eight{
+    background-color: yellow;
+}
+.nine{
     background-color: yellowgreen;
-}
-
-.seven {
-    background-color: olive;
-}
-
-.eight {
-    background-color: olivedrab;
-}
-
-.nine {
-    background-color: palevioletred;
 }
 
 /*Game status Styling */
 .status{
     display: inline-flex;
-    align-content: center;
+    align-items: center;
     justify-content: center;
     border: 1px dotted #000;
     margin: 1rem auto;
@@ -136,13 +138,7 @@ button:focus{
         width: 85%;
         height: 15rem;
     }
-    
-    .tile{
-        width: 32.93%;
-        height: 5rem;
-        font-size: 2rem;
-    }
-    
+   
     
     .two, .five, .eight{
         margin-left: -1.6%;
@@ -194,12 +190,6 @@ button:focus{
         height: 15rem;
     }
     
-    .tile{
-        width: 32.93%;
-        height: 5rem;
-        font-size: 2rem;
-    }
-    
     
     .two, .five, .eight{
         margin-left: -1.7%;
@@ -243,12 +233,6 @@ button:focus{
     .board{
         width: 60%;
         height: 15rem;
-    }
-    
-    .tile{
-        width: 33.03%;
-        height: 5rem;
-        font-size: 2rem;
     }
     
     
@@ -301,11 +285,6 @@ button:focus{
         margin: 2rem auto;
     }
 
-    .tile {
-        width: 33%;
-        height: 5rem;
-        font-size: 2rem;
-    }
 
     .two,
     .five,
@@ -357,12 +336,7 @@ button:focus{
         width: 60%;
         height: 15rem;
     }
-    
-    .tile{
-        width: 33.33%;
-        height: 5rem;
-        font-size: 2rem;
-    }
+
     
     
     .two, .five, .eight{
@@ -391,7 +365,7 @@ button:focus{
 @media  only screen and (min-width: 1440px) {
     /*Body alignment*/
     body{
-        width: 50%;
+        width: 35%;
         height: 75vh;
     }
     
@@ -406,12 +380,6 @@ button:focus{
     .board{
         width: 65%;
         height: 15rem;
-    }
-    
-    .tile{
-        width: 33.9%;
-        height: 5rem;
-        font-size: 2rem;
     }
     
     
