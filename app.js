@@ -26,7 +26,7 @@ const errNote = () => {
 }
 
 //variable to carry names globally
-let x;
+let x; let key;
 
 //home router
 app.get('/', (req, res) => {
@@ -37,7 +37,7 @@ app.get('/', (req, res) => {
 app.post('/check', (req, res) => {
     let mode = req.body.mode;
     x = req.body.nickname;
-    
+    key = req.body.OCkey
     //checks the game mode 
     if (mode == 'online') {
         //checking our database to see if user's inputed name already exists
@@ -80,26 +80,30 @@ app.get('/online-game', (req, res) => {
 let profiles = [];
 //socket.io server swop
 io.on("connection", (socket) => {
-  socket.join('game-room')
-  socket.emit('id', socket.id);
-  
-  
+  socket.join(key)
   let id = socket.id;
   socket.username = x;
+  // socket.emit('id', {id: socket.id, nom: socket.username});
+  
 
   let b = {
     id: socket.id,
     name: x,
+    room: key
   };
   profiles.push(b);
-
-
-  io.to('game-room').emit('userDb', profiles);
+  if (profiles.length == 2) {
+    io.to(key).emit('userDb', profiles);  
+  }
+  
   console.log(profiles);
   
+  socket.on('clearScreen',(datum)=>{
+    io.to(key).emit('clearScreen', datum);
+  });
 
   socket.on("ClickedTile", (e) => {
-    io.to('game-room').emit("play", e);
+    io.to(key).emit("play", e);
   });
 
 
@@ -107,20 +111,20 @@ io.on("connection", (socket) => {
     profiles.forEach((e, i) => {
       if (e.id === socket.id) {
         users.splice(users.indexOf(e.name), 1);
-        profile.splice(i, 1);
-        io.to('game-room').emit("usersDb", profiles);
+        profiles.splice(i, 1);
+        io.to(key).emit("usersDb", profiles);
       }
     });
   });
 
 
   socket.on("reset", () => {
-    io.to('game-room').emit("Reset-Game");
+    io.to(key).emit("Reset-Game");
   });
 
 
   socket.on('text', (e)=>{
-      io.to('game-room').emit('new', e);
+      io.to(key).emit('new', e);
   });
 });
    

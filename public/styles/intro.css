@@ -25,9 +25,10 @@
     margin: 5% 0;
 }
 .game-mode{
-    height: 7rem;
+    height: 9.5rem;
 }
 .player-details {
+    margin-top: 2%;
     height: 5rem; 
 }
 
@@ -43,6 +44,12 @@
     padding: 1.5%;
     margin: 3% 0;
 }
+#roomKey{
+    width: 90%;
+    padding: 1%;
+    margin: 0;
+}
+
 #main, .players, #pl-main, .fs, #join, #start{
     border-radius: .2rem;
 }
