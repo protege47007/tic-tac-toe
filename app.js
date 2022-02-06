@@ -92,6 +92,26 @@ io.on("connection", (socket) => {
     room: key
   };
   profiles.push(b);
+
+  // //experimental
+  // let instance = {
+  //   roomId: id,
+  //   count: 0,
+  //   user1: a,
+  //   user2: b
+  // }
+  // profiles.forEach(e=>{
+  //   if (e.room == null) {
+  //     profiles.splice(profiles.indexOf(e), 1);
+  //   }
+  //   else{
+
+  //   }
+      
+  
+  // });
+
+  //continuation..
   if (profiles.length == 2) {
     io.to(key).emit('userDb', profiles);  
   }

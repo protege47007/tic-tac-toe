@@ -5,13 +5,6 @@ const Url = 'http://localhost:3030';
 const socket = io(Url, {autoconnect: true});
 
 
-// let pkg;
-// socket.on('id', (data)=>{
-//     pkg = data;
-//     socket.username = data.nom;
-// });
-
-
 //querying the waiting for other players screen
 const plTab = document.querySelector('.players');
 
