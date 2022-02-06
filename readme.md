@@ -1,6 +1,11 @@
-to-do:
-1) online multiplayer game
-2) players tab for waiting screen
-3) reset prompt alert to be z-index = 2
+Clone the repo and run
+## npm install
 
+to start the application run
+
+## node app.js
+
+the application is running on
+
+## Localhost:3030
  
